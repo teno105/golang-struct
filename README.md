@@ -75,8 +75,8 @@ func main() {
 
 ```makefile
 # Go 관련 변수 설정
-APP_NAME := helloworld
-CMD_DIR := ./cmd/helloworld
+APP_NAME := golang-struct
+CMD_DIR := ./cmd/golang-struct
 BUILD_DIR := ./build
 
 .PHONY: all clean build run test fmt vet install
@@ -126,14 +126,14 @@ clean:
 make run
 ```
 
-이 명령어를 통해 `main.go`에서 작성한 `Hello, World!` 메시지를 확인할 수 있습니다.
+이 명령어를 통해 `main.go`에서 작성한 struct 정보를 확인할 수 있습니다.
 
 ### 4. 구조체 변수 초기화
 
 구조체 변수를 초기화 하는 방법에 대해 알아보겠습니다.
 
 ```go
-// cmd/helloworld/main.go
+// cmd/golang-struct/main.go
 package main
 
 import "fmt"
