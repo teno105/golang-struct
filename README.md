@@ -47,10 +47,10 @@ package main
 import "fmt"
 
 type House struct {
-	Address string
-	Size int
-	Price float64
-	Type string
+	Address	string
+	Size	int
+	Price	float64
+	Type	string
 }
 
 func main() {
@@ -139,10 +139,10 @@ package main
 import "fmt"
 
 type House struct {
-	Address string
-	Size int
-	Price float64
-	Type string
+	Address	string
+	Size	int
+	Price	float64
+	Type	string
 }
 
 func main() {
@@ -168,7 +168,7 @@ func main() {
 }
 ```
 
-이제 `make run` 명령을 사용하면 각 house의 크기가 출력됩니다.
+이제 `make run` 명령을 사용하면 각 house의 정보가 출력됩니다.
 
 ```bash
 make run
@@ -186,15 +186,15 @@ import "fmt"
 
 type User struct {
 	Name	string
-	ID		string
-	Age		int
+	ID	string
+	Age	int
 	Level	int
 }
 
 type VIPUser struct {
 	User
-	Price		int
-	Level		int
+	Price	int
+	Level	int
 }
 
 func main() {
@@ -234,8 +234,8 @@ package main
 import "fmt"
 
 type Student struct {
-	Age		int
-	No		int
+	Age	int
+	No	int
 	Score	float64
 }
 
