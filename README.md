@@ -160,15 +160,64 @@ func main() {
 		Type: "아파트",
 	}
 
-	fmt.Printf("house1 크기: %d평\n", house1.Size)
-	fmt.Printf("house2 크기: %d평\n", house2.Size)
-	fmt.Printf("house3 크기: %d평\n", house3.Size)
-	fmt.Printf("house4 크기: %d평\n", house4.Size)
-	fmt.Printf("house5 크기: %d평\n", house5.Size)
+	fmt.Printf("house1 주소: %s, 크기: %d평 가격: %.2f억 원 타입: %s\n", house1.Address, house1.Size, house1.Price, house1.Type)
+	fmt.Printf("house2 주소: %s, 크기: %d평 가격: %.2f억 원 타입: %s\n", house2.Address, house2.Size, house2.Price, house2.Type)
+	fmt.Printf("house3 주소: %s, 크기: %d평 가격: %.2f억 원 타입: %s\n", house3.Address, house3.Size, house3.Price, house3.Type)
+	fmt.Printf("house4 주소: %s, 크기: %d평 가격: %.2f억 원 타입: %s\n", house4.Address, house4.Size, house4.Price, house4.Type)
+	fmt.Printf("house5 주소: %s, 크기: %d평 가격: %.2f억 원 타입: %s\n", house5.Address, house5.Size, house5.Price, house5.Type)
 }
 ```
 
 이제 `make run` 명령을 사용하면 각 house의 크기가 출력됩니다.
+
+```bash
+make run
+```
+
+### 5. 구조체를 포함하는 구조체
+
+구조체를 포함하는 구조체를 알아보겠습니다.
+
+```go
+// cmd/golang-struct/main.go
+package main
+
+import "fmt"
+
+type User struct {
+	Name	string
+	ID		string
+	Age		int
+	Level	int
+}
+
+type VIPUser struct {
+	User
+	Price		int
+	Level		int
+}
+
+func main() {
+	user := User { "송하나", "hana", 23, 5 }
+	vip := VIPUser {
+		User{"화랑", "hwarang", 40, 10},
+		3,
+		250,
+	}
+
+	fmt.Printf("유저: %s ID: %s 나이: %d 레벨: %d\n", user.Name, user.ID, user.Age, user.Level)
+	fmt.Printf("VIP 유저: %s ID: %s 나이: %d 레벨: %d VIP 레벨: %d VIP 가격: %d만원\n", 
+		vip.User.Name,
+		vip.User.ID,
+		vip.User.Age,
+		vip.User.Level,
+		vip.Level,
+		vip.Price,
+	)
+}
+```
+
+이제 `make run` 명령을 사용하면 구조체를 포함한 각 유저의 정보가 출력됩니다.
 
 ```bash
 make run
