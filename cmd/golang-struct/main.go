@@ -1,33 +1,35 @@
-// cmd/golang-struct/main.go
 package main
 
 import "fmt"
 
-type House struct {
-	Address string
-	Size int
-	Price float64
-	Type string
+type User struct {
+	Name	string
+	ID		string
+	Age		int
+	Level	int
+}
+
+type VIPUser struct {
+	User
+	Price		int
+	Level		int
 }
 
 func main() {
-	var house1 House	// 기본값
-	var house2 House = House{"서울시 강동구...", 28, 9.80, "아파트"}
-	var house3 House = House{
-		"서울시 강동구...",
-		28,
-		9.80,
-		"아파트",
-	}
-	var house4 House = House{ Size: 28, Type: "아파트" }
-	var house5 House = House{
-		Size: 28,
-		Type: "아파트",
+	user := User { "송하나", "hana", 23, 5 }
+	vip := VIPUser {
+		User{"화랑", "hwarang", 40, 10},
+		3,
+		250,
 	}
 
-	fmt.Printf("house1 크기: %d평\n", house1.Size)
-	fmt.Printf("house2 크기: %d평\n", house2.Size)
-	fmt.Printf("house3 크기: %d평\n", house3.Size)
-	fmt.Printf("house4 크기: %d평\n", house4.Size)
-	fmt.Printf("house5 크기: %d평\n", house5.Size)
+	fmt.Printf("유저: %s ID: %s 나이: %d 레벨: %d\n", user.Name, user.ID, user.Age, user.Level)
+	fmt.Printf("VIP 유저: %s ID: %s 나이: %d 레벨: %d VIP 레벨: %d VIP 가격: %d만원\n", 
+		vip.User.Name,
+		vip.User.ID,
+		vip.User.Age,
+		vip.User.Level,
+		vip.Level,
+		vip.Price,
+	)
 }
