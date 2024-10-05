@@ -1,36 +1,31 @@
 // cmd/golang-struct/main.go
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"unsafe"
+)
 
 type User struct {
-	Name	string
-	ID		string
-	Age		int
-	Level	int
+	A	int8
+	B	int
+	C	int8
+	D	int
+	E	int8
 }
 
-type VIPUser struct {
-	User
-	Price		int
-	Level		int
+type User2 struct {
+	A	int8
+	C	int8
+	E	int8
+	B	int
+	D	int
 }
 
 func main() {
-	user := User { "송하나", "hana", 23, 5 }
-	vip := VIPUser {
-		User{"화랑", "hwarang", 40, 10},
-		3,
-		250,
-	}
+	user := User{1,2,3,4,5}
+	user2 := User2{1,2,3,4,5}
 
-	fmt.Printf("유저: %s ID: %s 나이: %d 레벨: %d\n", user.Name, user.ID, user.Age, user.Level)
-	fmt.Printf("VIP 유저: %s ID: %s 나이: %d 레벨: %d VIP 레벨: %d VIP 가격: %d만원\n", 
-		vip.User.Name,
-		vip.User.ID,
-		vip.User.Age,
-		vip.User.Level,
-		vip.Level,
-		vip.Price,
-	)
+	fmt.Println("User size:", unsafe.Sizeof(user))
+	fmt.Println("User2 size", unsafe.Sizeof(user2))
 }

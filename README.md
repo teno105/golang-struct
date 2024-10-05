@@ -222,3 +222,85 @@ func main() {
 ```bash
 make run
 ```
+
+### 6. 구조체 값 복사
+
+구조체 변숫값을 다른 구조체에 대입하면 모든 필드값이 복사됩니다.
+
+```go
+// cmd/golang-struct/main.go
+package main
+
+import "fmt"
+
+type Student struct {
+	Age		int
+	No		int
+	Score	float64
+}
+
+func PrintStudent(s Student) {
+	fmt.Printf("나이:%d 번호:%d 점수%.2f\n", s.Age, s.No, s.Score)
+}
+
+func main() {
+	var student = Student{15, 23, 88.2}
+
+	student2 := student
+
+	PrintStudent(student2)
+}
+```
+
+이제 `make run` 명령을 사용하면 값이 복사된 student2 정보가 출력됩니다.
+
+```bash
+make run
+```
+
+### 8. 필드 배치 순서에 따른 구조체 크기 변화
+
+메모리 정렬이란 컴퓨터가 데이터에 표과적으로 접근하고자 메모리를 일정 크기 간격으로 정렬하는 것을 말합니다.
+메모리 패딩이란 필드 사이에 공간을 띄우는 것을 말합니다.
+
+메모리 정렬 및 메모리 패딩을 고려한 필드 배치 방법에 대한 예제입니다.
+
+```go
+// cmd/golang-struct/main.go
+package main
+
+import (
+	"fmt"
+	"unsafe"
+)
+
+type User struct {
+	A	int8
+	B	int
+	C	int8
+	D	int
+	E	int8
+}
+
+type User2 struct {
+	A	int8
+	C	int8
+	E	int8
+	B	int
+	D	int
+}
+
+func main() {
+	user := User{1,2,3,4,5}
+	user2 := User2{1,2,3,4,5}
+
+	fmt.Println("User size:", unsafe.Sizeof(user))
+	fmt.Println("User2 size", unsafe.Sizeof(user2))
+}
+```
+
+이제 `make run` 명령을 사용하면 구조체가 사용하는 메모리 크기가 출력됩니다.
+
+```bash
+make run
+```
